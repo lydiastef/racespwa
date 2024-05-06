@@ -1,7 +1,6 @@
+'use client'
 import './style.css'
 import React from 'react';
-import { useRouter } from 'next/navigation';
-
 
 const Navbar: React.FC = () => {
   return (
