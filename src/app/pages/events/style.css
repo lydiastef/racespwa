@@ -1,0 +1,27 @@
+.events-h1 {
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.individual-card {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    padding: 2rem;
+    border: solid 1px rgb(199, 199, 199);
+    border-radius: 5px;
+    width: 200px;
+    height: 112px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: .5px;
+    line-height: 20px;
+}

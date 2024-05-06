@@ -9,7 +9,7 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      races: {
+      raceapi: {
         Row: {
           created_at: string
           id: number
