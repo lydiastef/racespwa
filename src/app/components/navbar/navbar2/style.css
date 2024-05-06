@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    }
+
+.nav2 {
+    height: 64px;
+    background-color: #1282A2;
+    text-decoration: none;
+}
+
+.a-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.a-item {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+}
+
+.nav2 a {
+    position: relative;
+    display: inline-block; /* Ensures the ::before content can align correctly */
+    text-decoration: none; /* Optional: removes underline from links */
+  }
+  
+  .nav2 a::before {
+    content: "";
+    position: absolute;
+    width: 0; /* Initially, the line has zero width */
+    height: 2px;
+    background-color: white;
+    bottom: 0;
+    left: 0; /* Start from the left */
+    transition: width 0.2s;
+  }
+  
+  .nav2 a:hover::before {
+    width: 100%; /* Expand the line width to 100% on hover */
+  }
+  

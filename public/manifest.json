@@ -1,0 +1,46 @@
+{
+    "name": "Find A Race",
+    "short_name": "Races",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "any",
+    "theme_color": "#1282A2",
+    "background_color": "#ffffff",
+    "description": "Browse running races around Europe",
+
+    "icons": [
+
+        {
+        "src": "/icon48.svg",
+        "type": "image/svg",
+        "sizes": "48x48",
+        "purpose": "any"
+        },
+        {
+        "src": "/icon144.svg",
+        "type": "image/svg",
+        "sizes": "144x144",
+        "purpose": "any"
+        },
+        {
+        "src": "/icon192.svg",
+        "type": "image/svg",
+        "sizes": "192x192",
+        "purpose": "any"
+        },
+        {
+        "src": "/icon512.svg",
+        "type": "image/svg",
+        "sizes": "512x512",
+        "purpose": "any"
+        }
+    ],
+    "protocol_handlers": [
+        {
+          "protocol": "web+myprotocol", 
+          "url": "/protocolhandler/%s"
+        }
+    ]
+  }
+  
