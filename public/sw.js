@@ -6,6 +6,58 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
+
+import { Serwist, strategies } from 'serwist';
+
+const serwist = new Serwist({
+  precacheEntries: [
+      // Base page and global styles
+      { url: '/', revision: '1' },  // Assuming this points to your home page rendered HTML
+      { url: '/styles/style.css', revision: '1' },  // Global styles if placed directly under styles in public or similar
+
+      // Component specific assets
+      { url: '/components/navbar/page.html', revision: '1' }, // If HTML is generated and placed in public
+      { url: '/components/navbar/style.css', revision: '1' },  // Assuming public path for component's CSS
+
+      // Specific pages and their styles
+      { url: '/pages/events/page.html', revision: '1' },  // If HTML is generated and placed in public
+      { url: '/pages/events/style.css', revision: '1' },   // Assuming public path for event page's CSS
+
+      // Scripts and images
+      { url: '/scripts/main.js', revision: '1' },
+      { url: '/images/logo.png', revision: '1' },
+      { url: '/offline.html', revision: '1' }  // Fallback page when offline
+  ],
+  skipWaiting: true,
+  clientsClaim: true,
+  navigationPreload: true,
+});
+
+serwist.runtimeCaching = [
+  {
+    urlPattern: new RegExp('/api/'),
+    handler: strategies.NetworkFirst
+  },
+  {
+    urlPattern: new RegExp('/articles/'),
+    handler: strategies.StaleWhileRevalidate
+  }
+];
+// Set default handler for fetch events
+serwist.router.setDefaultHandler({
+  handler: async ({event}) => {
+      try {
+          const response = await fetch(event.request);
+          return response || await caches.match('/offline.html');
+      } catch (error) {
+          return await caches.match('/offline.html');
+      }
+  }
+});
+serwist.addEventListeners();
+
+
+
 /******/ (function() { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({

@@ -1,6 +1,7 @@
 {
     "name": "Find A Race",
     "short_name": "Races",
+    "id": "/",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
