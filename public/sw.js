@@ -4,12 +4,11 @@
  * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
  * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
  * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).*/
 
-import { Serwist, strategies } from 'serwist';
+ import { Serwist, strategies } from 'serwist';
 
-const serwist = new Serwist({
+ const serwist = new Serwist({
   precacheEntries: [
       // Base page and global styles
       { url: '/', revision: '1' },  // Assuming this points to your home page rendered HTML
@@ -33,6 +32,7 @@ const serwist = new Serwist({
   navigationPreload: true,
 });
 
+// Define runtime caching strategies
 serwist.runtimeCaching = [
   {
     urlPattern: new RegExp('/api/'),
@@ -43,6 +43,7 @@ serwist.runtimeCaching = [
     handler: strategies.StaleWhileRevalidate
   }
 ];
+
 // Set default handler for fetch events
 serwist.router.setDefaultHandler({
   handler: async ({event}) => {
@@ -54,8 +55,8 @@ serwist.router.setDefaultHandler({
       }
   }
 });
-serwist.addEventListeners();
 
+serwist.addEventListeners();
 
 
 /******/ (function() { // webpackBootstrap
