@@ -1,42 +1,34 @@
-/** @type {import('next').NextConfig} */
+// Importing the entire next package and destructuring the desired parts
+import next from 'next';
+const { NextConfig } = next;
 
-import withSerwistInit from "@serwist/next";
+// Continue with your previous configurations
+import withSerwistInit from '@serwist/next';
+import withPWA from '@ducanh2912/next-pwa';
 
-const isProd = process.env.NODE_ENV === 'production'   //this disables pwa support while in dev mode = see reason below
+const isProd = process.env.NODE_ENV === 'production';
 
 const withSerwist = withSerwistInit({
-  // Note: This is only an example. If you use Pages Router,
-  // use something else that works, such as "service-worker/index.ts".
-  swSrc: "src/app/sw.ts",
-  swDest: "public/sw.js",
+  swSrc: 'src/app/sw.ts',
+  swDest: 'public/sw.js',
 });
 
-const withPWA = require("@ducanh2912/next-pwa").default({
+const pwaConfig = isProd ? withPWA({
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
   swcMinify: true,
-  dest: "public",
+  dest: 'public',
   fallbacks: {
-    //image: "/static/images/fallback.png",
-    document: "/offline", // if you want to fallback to a custom page rather than /_offline
-    // font: '/static/font/fallback.woff2',
-    // audio: ...,
-    // video: ...,
+    document: '/offline',
   },
   workboxOptions: {
     disableDevLogs: true,
   },
-  // ... other options you like
-});
-/** @type {import('next').NextConfig} */
+}) : (config) => config;
+
 const nextConfig = {
-  // ... other options you like
+  // Additional Next.js configuration options here
 };
 
-module.exports = withPWA(nextConfig);
-
-export default withSerwist({
-  // Your Next.js config
-});
-
+export default withSerwist(pwaConfig(nextConfig));
