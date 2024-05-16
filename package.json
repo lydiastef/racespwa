@@ -25,6 +25,7 @@
     "@types/react-dom": "^18",
     "serwist": "^9.0.2",
     "supabase": "^1.163.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "workbox-cli": "^7.1.0"
   }
 }
