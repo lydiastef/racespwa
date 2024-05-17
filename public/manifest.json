@@ -36,12 +36,6 @@
         "sizes": "512x512",
         "purpose": "any"
         }
-    ],
-    "protocol_handlers": [
-        {
-          "protocol": "web+myprotocol", 
-          "url": "/protocolhandler/%s"
-        }
     ]
   }
   

@@ -11,7 +11,7 @@ const SimpleComponent: React.FC = () => {
       <Navbar />
       <Navbar2/>
       <div className='main'>
-        <h1>Hello, welcome to React with TypeScript!</h1>
+        <h1>Hello, welcome to this PWA project that finally seems to actually be working!</h1>
       </div>
     </>
   );

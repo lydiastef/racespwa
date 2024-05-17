@@ -1,4 +1,4 @@
-import Head from "next/head";
+/*import Head from "next/head";
 
 import { useEffect } from "react";
 
@@ -56,8 +56,7 @@ export default function App({ Component, pageProps }) {
         <meta property="og:site_name" content="My awesome PWA app" />
         <meta property="og:url" content="https://yourdomain.com" />
         <meta property="og:image" content="/icons/og.png" />
-        {/* add the following only if you want to add a startup image for Apple devices. */}
-        <link
+        /*<link
           rel="apple-touch-startup-image"
           href="/images/apple_splash_2048.png"
           sizes="2048x2732"
@@ -96,4 +95,22 @@ export default function App({ Component, pageProps }) {
       <Component {...pageProps} />
     </>
   );
+}*/
+
+import Head from 'next/head';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>My Awesome PWA</title>
+        <meta name="description" content="The best PWA in the world." />
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
+
+export default MyApp;

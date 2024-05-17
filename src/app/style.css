@@ -1,0 +1,9 @@
+.main {
+    display: flex;
+    justify-content: center;
+    margin: 4rem;
+}
+
+h1 {
+    font-size: 24px;
+}

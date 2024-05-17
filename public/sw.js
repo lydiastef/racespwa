@@ -13,7 +13,7 @@ self.addEventListener('install', event => {
       return cache.addAll(PRECACHE_ASSETS.map(url => new Request(url, { cache: 'reload' })))
         .catch(error => {
           console.error('Failed to cache assets during install:', error);
-          throw error;
+          throw error; // Re-throw to propagate the error
         });
     })
   );
@@ -42,10 +42,20 @@ self.addEventListener('fetch', event => {
       if (cachedResponse) {
         return cachedResponse;
       }
-      return fetch(event.request).catch(error => {
+
+      return fetch(event.request).then(networkResponse => {
+        // Optionally, update the cache with the network response
+        if (networkResponse.ok) {
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        }
+        return networkResponse;
+      }).catch(error => {
         console.error('Fetch failed; returning offline page instead.', error);
         if (event.request.mode === 'navigate') {
-          return caches.match('/offline.html').then(offlineResponse => {
+          return caches.match('/offline').then(offlineResponse => {
             if (offlineResponse) {
               return offlineResponse;
             }

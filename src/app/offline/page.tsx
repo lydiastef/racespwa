@@ -8,9 +8,9 @@ const NotFound: React.FC = () => {
             <div>                
                 <h1>oh no!</h1>
                 <h1>There is no internet</h1>
-                <h2>It&apos;s a good idea to have an offline page because I might not be precaching 
-                    everything and you don&apos;t want your users to get stuck on a blank screen.
-                    But this page needs some more work though! I haven&apos;t even connected it yet. </h2>
+                <h2>Let's sing a song in the meantime - Twinkle, twinkle, little star,
+                How I wonder what you are! Up above the world so high, Like a diamond in the sky. 
+                Wow that was fun! Is the internet back yet?</h2>
             </div> 
         </>
     )
